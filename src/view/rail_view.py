@@ -5,6 +5,11 @@ import logging
 logger=logging.getLogger(__name__+".rail_view")
 rail_api=Blueprint('rail',__name__)
 
+@rail_api.route('/refresh',methods=['GET'])
+def refresh():
+    return RailController.refresh()
+
+
 @rail_api.route('/getall',methods=['GET'])
 def get_all():
     return RailController.get_all()

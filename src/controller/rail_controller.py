@@ -10,6 +10,15 @@ data_reader=DataReader()
 rail_schema=RailSchema()
 class RailController:
 
+    def refresh():
+        try:
+            data_reader=DataReader()
+            return SharedResponse.success_response({"message":"Data refreshed Successfully"})
+        except Exception as err:
+            logger.error(err)
+            traceback.print_exc()
+            return SharedResponse.server_error_response()
+
     def get_all():
 
         try:
